@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add/Edit Author</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container mt-5">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h3 class="mb-0" th:text="${author.id == null ? '➕ Add Author' : '✏️ Edit Author'}"></h3>
+        </div>
+        <div class="card-body">
+            <form th:action="@{/authors/save}" th:object="${author}" method="post">
+                <input type="hidden" th:field="*{id}"/>
+
+                <div class="mb-3">
+                    <label class="form-label">Name</label>
+                    <input type="text" th:field="*{name}" class="form-control" required/>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label">Biography</label>
+                    <textarea th:field="*{biography}" class="form-control" rows="4"></textarea>
+                </div>
+
+                <div class="d-flex justify-content-between">
+                    <a th:href="@{/authors}" class="btn btn-secondary">← Back to List</a>
+                    <button type="submit" class="btn btn-success">💾 Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
