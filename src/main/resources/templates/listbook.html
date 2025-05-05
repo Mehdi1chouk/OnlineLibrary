@@ -10,7 +10,7 @@
 <div class="container mt-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="mb-0">📚 List of Books</h2>
-        <a class="btn btn-primary" th:href="@{/books/add}">+ Add Book</a>
+       <!-- <a class="btn btn-primary" th:href="@{/books/add}">+ Add Book</a>-->
         <a class="btn btn-info" th:href="@{/users/dashboard}">My Borrowed Books</a>
     </div>
 
@@ -81,10 +81,10 @@
                          width="100" />
                 </td>
                 <td class="text-center">
-                    <a th:href="@{/books/edit/{id}(id=${book.id})}"
+                    <!--<a th:href="@{/books/edit/{id}(id=${book.id})}"
                        class="btn btn-sm btn-warning me-1">✏️ Edit</a>
                     <a th:href="@{/books/delete/{id}(id=${book.id})}"
-                       class="btn btn-sm btn-danger me-1">🗑️ Delete</a>
+                       class="btn btn-sm btn-danger me-1">🗑️ Delete</a>-->
                     <a href="#"
                        th:onclick="'if(confirm(\'Are you sure you want to borrow this book?\')) window.location.href=\'' + @{/books/borrow/{id}(id=${book.id})} + '\';'"
                        class="btn btn-sm btn-success">

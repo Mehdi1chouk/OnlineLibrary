@@ -35,6 +35,8 @@ public class BookController {
 
     //private final String UPLOAD_DIR = "src/main/resources/static";
     private static final String UPLOAD_DIR = "C:/uploads/";
+
+    @Autowired
     UserService userService;
 
 

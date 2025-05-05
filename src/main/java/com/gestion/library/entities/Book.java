@@ -7,6 +7,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.antlr.v4.runtime.misc.NotNull;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Max;
+
+
 import java.util.Set;
 
 @Getter
@@ -27,13 +33,23 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Title is required")
+    @Size(max = 150, message = "Title must be at most 150 characters")
     private String title;
+
+    @NotBlank(message = "ISBN is required")
+    @Size(max = 30, message = "ISBN must be at most 30 characters")
     private String isbn;
 
+    @Min(value = 1450, message = "Published year must be after 1450")
+    @Max(value = 2100, message = "Published year must be before 2100")
     private int publishedYear;
+
+    // You can make coverImage optional, or add validation if needed
     private String coverImage;
-    @Column(length = 2000) // Optional, to allow longer text
-    private String description;// path to the uploaded image
+
+    @Size(max = 2000, message = "Description must be at most 2000 characters")
+    private String description;
     @ManyToOne
     @JsonIgnore
     @JoinColumn(name = "author_id")
